@@ -45,6 +45,7 @@ namespace JetpackJoyride
 
         private void Hooking_OnPostFireGun(Gun gun)
         {
+            // does this even work???????????????????
             bool isPlayer = gun.transform.parent.gameObject.GetComponent<DespawnMeshVFX>() == null;
             if (isPlayer)
             {
