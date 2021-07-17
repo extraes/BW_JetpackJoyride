@@ -28,9 +28,9 @@ namespace JetpackJoyride
             {
                 if (b)
                 {
-                    Hooking.OnPostFireGun += Hooking_OnPostFireGun;
+                    Hooking.OnPreFireGun += Hooking_OnPreFireGun;
                 }
-                else Hooking.OnPostFireGun -= Hooking_OnPostFireGun;
+                else Hooking.OnPreFireGun -= Hooking_OnPreFireGun;
             }));
             menu.CreateBoolElement("Move only with guns", Color.yellow, false, new Action<bool>((bool b) =>
             {
@@ -43,10 +43,10 @@ namespace JetpackJoyride
             }));
         }
 
-        private void Hooking_OnPostFireGun(Gun gun)
+        private void Hooking_OnPreFireGun(Gun gun)
         {
             // does this even work???????????????????
-            bool isPlayer = gun.transform.parent.gameObject.GetComponent<DespawnMeshVFX>() == null;
+            bool isPlayer = gun == Player.GetGunInHand(Player.rightHand) || Player.GetGunInHand(Player.leftHand);
             if (isPlayer)
             {
                 GameObject.FindObjectOfType<PhysBody>()?.AddVelocityChange(-gun.transform.forward * 5);
