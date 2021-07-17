@@ -1,2 +1,2 @@
 # BONEWORKS Jetpack Joyride
-Because recoil isn't the goal, not a side effect.
+Because recoil is the goal, not a side effect.
